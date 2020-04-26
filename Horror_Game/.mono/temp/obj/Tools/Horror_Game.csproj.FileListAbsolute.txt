@@ -1,0 +1,5 @@
+C:\Users\nooha\Desktop\GameDev\Horror_Game\.mono\temp\bin\Tools\Horror_Game.dll
+C:\Users\nooha\Desktop\GameDev\Horror_Game\.mono\temp\bin\Tools\Horror_Game.pdb
+C:\Users\nooha\Desktop\GameDev\Horror_Game\.mono\temp\obj\Tools\Horror_Game.csprojAssemblyReference.cache
+C:\Users\nooha\Desktop\GameDev\Horror_Game\.mono\temp\obj\Tools\Horror_Game.dll
+C:\Users\nooha\Desktop\GameDev\Horror_Game\.mono\temp\obj\Tools\Horror_Game.pdb

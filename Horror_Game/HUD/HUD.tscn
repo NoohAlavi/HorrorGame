@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BatteryLabel" type="Label" parent="."]
+margin_left = 839.645
+margin_top = 4.31693
+margin_right = 929.645
+margin_bottom = 18.3169
+rect_scale = Vector2( 2, 2 )
+text = "Battery: 100%"
