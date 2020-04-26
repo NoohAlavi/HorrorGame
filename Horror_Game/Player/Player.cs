@@ -19,6 +19,8 @@ public class Player : KinematicBody
     private SpotLight _flashlight;
     private RayCast _interactRayCast;
     private Timer _batteryTimer;
+    private ColorRect _settingsPage;
+    private HSlider _sensitivitySlider;
 
     public override void _Ready()
     {
@@ -27,6 +29,7 @@ public class Player : KinematicBody
         _flashlight = GetNode<SpotLight>("Head/Flashlight");
         _interactRayCast = GetNode<RayCast>("Head/InteractRayCast");
         _batteryTimer = GetNode<Timer>("BatteryTimer");
+        _settingsPage = GetNode<ColorRect>("/root/World/HUD/SettingsPage");
 
         _batteryTimer.Connect("timeout", this, nameof(DrainBattery));
 
