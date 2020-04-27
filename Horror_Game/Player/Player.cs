@@ -29,7 +29,7 @@ public class Player : KinematicBody
         _flashlight = GetNode<SpotLight>("Head/Flashlight");
         _interactRayCast = GetNode<RayCast>("Head/InteractRayCast");
         _batteryTimer = GetNode<Timer>("BatteryTimer");
-        _settingsPage = GetNode<ColorRect>("/root/World/HUD/SettingsPage");
+        _settingsPage = GetNode<ColorRect>("/root/World/HUD/Settings");
 
         _batteryTimer.Connect("timeout", this, nameof(DrainBattery));
 
@@ -45,7 +45,6 @@ public class Player : KinematicBody
     public override void _PhysicsProcess(float delta)
     {
         Velocity = MoveAndSlide(Velocity);
-        GD.Print(GlobalTransform);
         //Make sure y pos is 2.5
         Vector3 pos = GlobalTransform.origin;
         GlobalTransform = new Transform(GlobalTransform.basis, new Vector3(pos.x, 2.5f, pos.z));
@@ -60,7 +59,7 @@ public class Player : KinematicBody
             RotateY(-Mathf.Deg2Rad(e.Relative.x * MouseSensitivity));
             _head.RotateX(-Mathf.Deg2Rad(e.Relative.y * MouseSensitivity));
 
-            var rotX = Mathf.Clamp(_head.Rotation.x, -6f, 6f);
+            var rotX = Mathf.Clamp(_head.Rotation.x, -2f, 2f);
             _head.Rotation = new Vector3(rotX, _head.Rotation.y, _head.Rotation.z);
         }
 
