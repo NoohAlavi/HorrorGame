@@ -3,19 +3,14 @@ using System;
 
 public class GameOver : Control
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
-    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        
+        Input.SetMouseMode(Input.MouseMode.Visible);
+        GetNode<Button>("RetryButton").Connect("pressed", this, nameof(Retry));
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    private void Retry()
+    {
+        GetTree().ChangeScene("res://MainMenu/MainMenu.tscn");
+    }
 }

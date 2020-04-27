@@ -55,7 +55,7 @@ public class Killer : KinematicBody
 
         //Collision Logic
 
-        _rayCast.CastTo = _targetPlayer.GlobalTransform.origin;
+        _rayCast.CastTo = _targetPlayer.GlobalTransform.origin * -2f;
         if (_rayCast.IsColliding())
         {
             Spatial collider = (Spatial)_rayCast.GetCollider();

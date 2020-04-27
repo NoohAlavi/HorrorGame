@@ -24,5 +24,6 @@ light_color = Color( 1, 0, 0, 1 )
 light_energy = 16.0
 
 [node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19574, 0 )
 enabled = true
-cast_to = Vector3( 0, 0, -3 )
+cast_to = Vector3( 0, 0, -2 )
