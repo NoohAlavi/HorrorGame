@@ -5,7 +5,7 @@
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
-height = 0.25
+height = 0.08
 
 [sub_resource type="Environment" id=2]
 background_mode = 2

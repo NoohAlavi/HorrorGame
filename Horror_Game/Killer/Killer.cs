@@ -49,18 +49,15 @@ public class Killer : KinematicBody
             Velocity = MoveAndSlide(Velocity);
         }
 
-        //Make sure y pos is 2.5
-        // Vector3 pos = GlobalTransform.origin;
-        // GlobalTransform = new Transform(GlobalTransform.basis, new Vector3(pos.x, 3f, pos.z));
-
         //Collision Logic
 
-        _rayCast.CastTo = _targetPlayer.GlobalTransform.origin * -2;
+        _rayCast.CastTo =  _rayCast.ToLocal(_targetPlayer.GlobalTransform.origin);
         if (_rayCast.IsColliding())
         {
             Spatial collider = (Spatial)_rayCast.GetCollider();
-            if (collider is Player)
+            if (collider is Player && GlobalTransform.origin.DistanceTo(collider.GlobalTransform.origin) <= 3f)
             {
+                // GD.Print("hit player");
                 GetTree().ChangeScene("res://GameOver/GameOver.tscn");
             }
         }

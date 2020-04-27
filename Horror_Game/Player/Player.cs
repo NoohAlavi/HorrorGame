@@ -48,6 +48,15 @@ public class Player : KinematicBody
         //Make sure y pos is 2.5
         Vector3 pos = GlobalTransform.origin;
         GlobalTransform = new Transform(GlobalTransform.basis, new Vector3(pos.x, 2.5f, pos.z));
+
+        if (_interactRayCast.IsColliding())
+        {
+            Spatial collider = (Spatial)_interactRayCast.GetCollider();
+            if (collider.IsInGroup("Items"))
+            {
+                //add item pickup logic
+            }
+        }
     }
 
     public override void _Input(InputEvent @event)
