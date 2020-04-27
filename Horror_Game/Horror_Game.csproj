@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Killer\Killer.cs" />
     <Compile Include="MainMenu\MainMenu.cs" />
+    <Compile Include="Notebook\Notebook.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

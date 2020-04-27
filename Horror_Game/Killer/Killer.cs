@@ -34,8 +34,7 @@ public class Killer : KinematicBody
     {
         //implement fsm
 
-        //
-
+        //pathfinding logic
         _points = new List<Vector3>(_nav.GetSimplePath(GlobalTransform.origin, _targetPlayer.GlobalTransform.origin));
 
         if (_points.Count > 0)
@@ -51,8 +50,8 @@ public class Killer : KinematicBody
         }
 
         //Make sure y pos is 2.5
-        Vector3 pos = GlobalTransform.origin;
-        GlobalTransform = new Transform(GlobalTransform.basis, new Vector3(pos.x, 2.5f, pos.z));
+        // Vector3 pos = GlobalTransform.origin;
+        // GlobalTransform = new Transform(GlobalTransform.basis, new Vector3(pos.x, 3f, pos.z));
     }
 
     private Vector3 RoundVector(Vector3 vec)
