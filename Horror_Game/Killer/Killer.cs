@@ -23,11 +23,13 @@ public class Killer : KinematicBody
     private Player _targetPlayer;
     private List<Vector3> _points;
     private Navigation _nav;
+    private RayCast _rayCast;
 
     public override void _Ready()
     {
         _nav = GetParent<Navigation>();
         _targetPlayer = GetNode<Player>("../Player");
+        _rayCast = GetNode<RayCast>("RayCast");
     }
 
     public override void _PhysicsProcess(float delta)
@@ -39,10 +41,8 @@ public class Killer : KinematicBody
 
         if (_points.Count > 0)
         {
-            GD.Print(RoundVector(_points[0]), " ", RoundVector(GlobalTransform.origin), " ", (RoundVector(GlobalTransform.origin).x == RoundVector(_points[0]).x && RoundVector(GlobalTransform.origin).z == RoundVector(_points[0]).z));
             if (RoundVector(GlobalTransform.origin).x == RoundVector(_points[0]).x && RoundVector(GlobalTransform.origin).z == RoundVector(_points[0]).z)
             {
-                GD.Print("Removed Point 0");
                 _points.RemoveAt(0);
             }
             Velocity = Translation.DirectionTo(_points[0]) * Speed;
@@ -52,6 +52,18 @@ public class Killer : KinematicBody
         //Make sure y pos is 2.5
         // Vector3 pos = GlobalTransform.origin;
         // GlobalTransform = new Transform(GlobalTransform.basis, new Vector3(pos.x, 3f, pos.z));
+
+        //Collision Logic
+
+        _rayCast.CastTo = _targetPlayer.GlobalTransform.origin;
+        if (_rayCast.IsColliding())
+        {
+            Spatial collider = (Spatial)_rayCast.GetCollider();
+            if (collider is Player)
+            {
+                GetTree().ChangeScene("res://GameOver/GameOver.tscn");
+            }
+        }
     }
 
     private Vector3 RoundVector(Vector3 vec)

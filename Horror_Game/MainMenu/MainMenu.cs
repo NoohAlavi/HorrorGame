@@ -10,6 +10,6 @@ public class MainMenu : Control
 
     private void StartGame()
     {
-        GetTree().ChangeScene("res://World/World.tscn");
+        GetTree().ChangeScene("res://Instructions/Instructions.tscn");
     }
 }

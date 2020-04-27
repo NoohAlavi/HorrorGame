@@ -22,3 +22,7 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 light_color = Color( 1, 0, 0, 1 )
 light_energy = 16.0
+
+[node name="RayCast" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, -3 )

@@ -1,21 +1,19 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://MainMenu/coldnightforalligators.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://MainMenu/MainMenu.cs" type="Script" id=2]
+[ext_resource path="res://Instructions/Instructions.cs" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 72
+size = 24
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 48
-use_mipmaps = true
-use_filter = true
+size = 24
 font_data = ExtResource( 1 )
 
-[node name="MainMenu" type="Control"]
+[node name="Instructions" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -27,33 +25,45 @@ __meta__ = {
 margin_right = 1024.0
 margin_bottom = 600.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="."]
-margin_left = 328.0
-margin_top = 64.0
-margin_right = 695.0
-margin_bottom = 146.0
+margin_left = 96.0
+margin_top = 16.0
+margin_right = 936.0
+margin_bottom = 571.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.501961, 0, 0, 1 )
-text = "Horror Game"
+text = "YOU ARE A POLICE DETECTIVE INVESTIGATING A MURDER!
+
+YOU DECIDE TO GO TO THE HOUSE OF YOUR PRIME SUSPECT, TO FIND EVIDENCE!
+
+BUT BE CAREFUL! HE HAS SECURITY CAMERAS EVERYWHERE!
+
+ALL YOU HAVE IS YOUR FLASHLIGHT, PISTOL, AND TRUSTOWORTY NOTEBOOK!
+				
+FIND EVIDENCE, AND THEN LEAVE THE HOUSE!
+
+
+
+CONTROLS:
+
+WASD : Movement
+Mouse : Look Around
+RMB & F : Flashlight
+E : Interact"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" type="Button" parent="."]
-margin_left = 464.0
-margin_top = 192.0
-margin_right = 563.0
-margin_bottom = 253.0
+[node name="ContinueButton" type="Button" parent="."]
+margin_left = 880.0
+margin_top = 544.0
+margin_right = 958.0
+margin_bottom = 569.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.501961, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 1, 0, 0, 1 )
-text = "Play"
+text = "Continue..."
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
