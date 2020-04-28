@@ -24,7 +24,6 @@ script = ExtResource( 2 )
 [node name="Head" type="Spatial" parent="Map/Player"]
 
 [node name="Camera" type="Camera" parent="Map/Player/Head"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0906842, 0 )
 
 [node name="InteractRayCast" type="RayCast" parent="Map/Player/Head"]
 enabled = true

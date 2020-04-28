@@ -6,13 +6,17 @@ public class Player : KinematicBody
     [Export]
     public Vector3 Velocity = new Vector3();
     [Export]
-    public float Speed = 5f;
+    public float MaxSpeed = 5f;
     [Export]
     public float MouseSensitivity = .25f;
     [Export]
     public bool IsHidden = false;
     [Export]
-    public float FlashlightBattery = 100f; 
+    public float FlashlightBattery = 100f;
+    [Export]
+    public bool IsCrouching = false;
+
+    public float Speed;
 
     private Spatial _head;
     private Camera _cam;
@@ -31,6 +35,8 @@ public class Player : KinematicBody
         _batteryTimer = GetNode<Timer>("BatteryTimer");
         _settingsPage = GetNode<ColorRect>("/root/World/HUD/Settings");
 
+        Speed = MaxSpeed;
+
         _batteryTimer.Connect("timeout", this, nameof(DrainBattery));
 
         Input.SetMouseMode(Input.MouseMode.Captured);
@@ -44,7 +50,24 @@ public class Player : KinematicBody
 
     public override void _PhysicsProcess(float delta)
     {
+
+        //Add crouching logic
+
+        if (IsCrouching)
+        {
+            Vector3 position = GlobalTransform.origin;
+            _cam.Translation = new Vector3(0f, -.5f, 0f);
+            Speed = MaxSpeed / 2f;
+        }  
+        else
+        {
+            Vector3 position = GlobalTransform.origin;
+            _cam.Translation = new Vector3(0f, 0f, 0f);
+            Speed = MaxSpeed;
+        }
+
         Velocity = MoveAndSlide(Velocity);
+
         //Make sure y pos is 2.5
         Vector3 pos = GlobalTransform.origin;
         GlobalTransform = new Transform(GlobalTransform.basis, new Vector3(pos.x, 2.5f, pos.z));
@@ -82,11 +105,18 @@ public class Player : KinematicBody
             if (Input.GetMouseMode() == Input.MouseMode.Captured)
             {
                 Input.SetMouseMode(Input.MouseMode.Visible);
+                _settingsPage.Visible = true;
             }
             else
             {
                 Input.SetMouseMode(Input.MouseMode.Captured);
+                _settingsPage.Visible = false;
             }
+        }
+
+        if (Input.IsActionJustPressed("Crouch"))
+        {
+            IsCrouching = !IsCrouching;
         }
 
         // Movement Logic
