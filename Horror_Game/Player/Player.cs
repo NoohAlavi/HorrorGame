@@ -8,13 +8,15 @@ public class Player : KinematicBody
     [Export]
     public float MaxSpeed = 5f;
     [Export]
-    public float MouseSensitivity = .25f;
+    public float MaxMouseSensitivity = .25f;
     [Export]
     public bool IsHidden = false;
     [Export]
     public float FlashlightBattery = 100f;
     [Export]
     public bool IsCrouching = false;
+
+    public float MouseSensitivity;
 
     public float Speed;
 
@@ -28,12 +30,16 @@ public class Player : KinematicBody
 
     public override void _Ready()
     {
+
+        MouseSensitivity = MaxMouseSensitivity;
+
         _head = GetNode<Spatial>("Head");
         _cam = GetNode<Camera>("Head/Camera");
         _flashlight = GetNode<SpotLight>("Head/Flashlight");
         _interactRayCast = GetNode<RayCast>("Head/InteractRayCast");
         _batteryTimer = GetNode<Timer>("BatteryTimer");
         _settingsPage = GetNode<ColorRect>("/root/World/HUD/Settings");
+        _sensitivitySlider = _settingsPage.GetNode<HSlider>("SensitivitySlider");
 
         Speed = MaxSpeed;
 
@@ -46,6 +52,7 @@ public class Player : KinematicBody
     {
         GetNode<Label>("/root/World/HUD/BatteryLabel").Text = $"Battery: {FlashlightBattery}%";
         _flashlight.LightEnergy = FlashlightBattery / 10f;
+        MouseSensitivity = (float)_sensitivitySlider.Value;
     }
 
     public override void _PhysicsProcess(float delta)
